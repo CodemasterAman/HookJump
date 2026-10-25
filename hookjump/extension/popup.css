@@ -1,0 +1,39 @@
+:root { color-scheme: dark; }
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  width: 320px;
+  padding: 16px;
+  background: #0f0f10;
+  color: #f2f2f2;
+  font: 13px/1.4 "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+header { display: flex; gap: 10px; align-items: center; margin-bottom: 14px; }
+header img { border-radius: 8px; }
+h1 { margin: 0; font-size: 16px; }
+.tag { margin: 0; opacity: 0.6; font-size: 12px; }
+
+.toggles { display: flex; flex-direction: column; gap: 2px; background: #18181a; border-radius: 12px; padding: 4px; }
+.row { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 9px 10px; border-radius: 9px; cursor: pointer; }
+.row:hover { background: #202023; }
+.row span { display: flex; flex-direction: column; }
+.row small { opacity: 0.55; font-size: 11px; }
+input[type="checkbox"] {
+  appearance: none; width: 34px; height: 20px; border-radius: 999px; background: #3a3a3f;
+  position: relative; flex: none; cursor: pointer; transition: background 150ms;
+}
+input[type="checkbox"]::after {
+  content: ""; position: absolute; top: 3px; left: 3px; width: 14px; height: 14px;
+  border-radius: 50%; background: #fff; transition: transform 150ms;
+}
+input[type="checkbox"]:checked { background: linear-gradient(135deg, #ff3d6e, #ff9a3d); }
+input[type="checkbox"]:checked::after { transform: translateX(14px); }
+
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 12px; }
+.stats div { background: #18181a; border-radius: 10px; padding: 10px 8px; text-align: center; }
+.stats span { display: block; font-size: 18px; font-weight: 700; }
+.stats small { opacity: 0.55; font-size: 10.5px; }
+
+.sync { margin: 10px 2px 0; font-size: 11px; opacity: 0.6; min-height: 14px; }
+.sync.err { color: #ff8a8a; opacity: 0.9; }
+footer { margin-top: 8px; font-size: 11px; opacity: 0.5; }
