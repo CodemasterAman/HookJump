@@ -1,0 +1,179 @@
+.hj-root {
+  position: fixed;
+  right: 20px;
+  bottom: 96px;
+  z-index: 2147483000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  font-family: "Roboto", "Segoe UI", system-ui, sans-serif;
+  pointer-events: none;
+}
+.hj-root[hidden], .hj-root.hj-ad { display: none !important; }
+.hj-root > * { pointer-events: auto; }
+
+/* ---------- options panel ---------- */
+.hj-panel {
+  width: 236px;
+  padding: 10px;
+  border-radius: 16px;
+  background: rgba(18, 18, 20, 0.88);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  color: #fff;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.45), inset 0 0 0 1px rgba(255, 255, 255, 0.09);
+  transition: opacity 200ms ease, background 200ms ease;
+  animation: hj-in 220ms ease-out;
+}
+.hj-panel[hidden] { display: none; }
+/* shrinking into the fire button after 10 s */
+.hj-panel.hj-minimize { animation: hj-minimize 380ms ease-in forwards; transform-origin: 85% 110%; }
+/* auto-shown at song start: light, see-through; solid on hover */
+.hj-panel.hj-auto { opacity: 0.62; background: rgba(18, 18, 20, 0.5); }
+.hj-panel.hj-auto:hover { opacity: 1; background: rgba(18, 18, 20, 0.88); }
+
+.hj-head {
+  display: flex; justify-content: space-between; align-items: center;
+  margin: 0 2px 8px; font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; opacity: 0.7;
+}
+.hj-ver { font-style: normal; opacity: 0.55; text-transform: none; letter-spacing: 0; margin-left: 4px; }
+.hj-opts { display: flex; flex-direction: column; gap: 6px; }
+.hj-opt {
+  display: grid;
+  grid-template-columns: 28px auto 1fr auto;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 7px 10px 7px 7px;
+  border: 0;
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.07);
+  color: #fff;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background 150ms, transform 150ms;
+}
+.hj-opt:hover:not([disabled]) { background: rgba(255, 255, 255, 0.16); transform: translateX(-2px); }
+.hj-opt[disabled] { cursor: default; opacity: 0.42; }
+.hj-opt[disabled] .hj-bolt { background: rgba(255, 255, 255, 0.14); }
+.hj-bolt {
+  width: 28px; height: 28px; display: grid; place-items: center;
+  border-radius: 8px; font-size: 14px;
+  background: linear-gradient(135deg, #ff3d6e, #ff9a3d);
+}
+.hj-time { font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.hj-src { font-size: 11px; opacity: 0.6; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hj-star { color: #ffc24b; font-size: 14px; }
+.hj-best { box-shadow: inset 0 0 0 1px rgba(255, 194, 75, 0.45); }
+.hj-empty { font-size: 12px; opacity: 0.7; padding: 4px 2px 2px; }
+.hj-empty[hidden] { display: none; }
+
+.hj-reset {
+  width: 100%;
+  margin-top: 8px;
+  padding: 7px 8px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.72);
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 1.2;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+}
+.hj-reset:hover { color: #fff; background: rgba(255, 80, 110, 0.2); box-shadow: inset 0 0 0 1px rgba(255, 110, 140, 0.5); }
+.hj-reset[hidden] { display: none; }
+
+.hj-x {
+  width: 22px; height: 22px; border: 0; border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1); color: #fff; font-size: 11px; cursor: pointer;
+}
+.hj-x:hover { background: rgba(255, 255, 255, 0.22); }
+
+/* ---------- toast ---------- */
+.hj-toast {
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(18, 18, 20, 0.92);
+  color: #fff;
+  font-size: 12.5px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+}
+.hj-toast[hidden] { display: none; }
+.hj-toast-in { animation: hj-toast 2s ease forwards; }
+
+/* ---------- fire button ---------- */
+.hj-fire-wrap { position: relative; width: 44px; height: 44px; }
+.hj-fire {
+  position: relative;
+  z-index: 2;
+  width: 44px; height: 44px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(18, 18, 20, 0.85);
+  font-size: 21px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  transition: transform 150ms;
+}
+.hj-fire:hover { transform: scale(1.08); }
+.hj-burn { animation: hj-burn 650ms ease-out; }
+.hj-ping { animation: hj-ping 600ms ease-out; }
+
+.hj-ring {
+  position: absolute; inset: 0; z-index: 1;
+  border-radius: 999px;
+  box-shadow: 0 0 0 2px rgba(255, 140, 60, 0.9), 0 0 24px 6px rgba(255, 80, 60, 0.55);
+  animation: hj-ring 650ms ease-out forwards;
+  pointer-events: none;
+}
+.hj-flame {
+  position: absolute;
+  left: 50%; top: 50%;
+  z-index: 3;
+  font-size: 18px;
+  pointer-events: none;
+  opacity: 0;
+  animation: hj-rise 1100ms ease-out forwards;
+}
+
+@keyframes hj-in { from { transform: translateY(8px); } to { transform: none; } }
+@keyframes hj-burn {
+  0%   { transform: scale(1) rotate(0); }
+  20%  { transform: scale(1.35) rotate(-12deg); background: rgba(255, 90, 60, 0.95); }
+  40%  { transform: scale(1.2) rotate(10deg); }
+  60%  { transform: scale(1.28) rotate(-6deg); background: rgba(255, 140, 60, 0.9); }
+  80%  { transform: scale(1.08) rotate(3deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+@keyframes hj-minimize {
+  from { transform: none; opacity: 1; }
+  to   { transform: translate(40px, 60px) scale(0.15); opacity: 0; }
+}
+@keyframes hj-ping {
+  0%   { box-shadow: 0 0 0 0 rgba(255, 120, 60, 0.7); transform: scale(1); }
+  50%  { transform: scale(1.12); }
+  100% { box-shadow: 0 0 0 14px rgba(255, 120, 60, 0); transform: scale(1); }
+}
+@keyframes hj-ring {
+  from { transform: scale(1); opacity: 1; }
+  to   { transform: scale(2.2); opacity: 0; }
+}
+/* each flame floats up and sways side to side (wavy) while shrinking */
+@keyframes hj-rise {
+  0%   { opacity: 0; transform: translate(-50%, -50%) scale(var(--s)); }
+  12%  { opacity: 1; }
+  35%  { transform: translate(calc(-50% + var(--wave)), -110%) scale(var(--s)); }
+  60%  { transform: translate(calc(-50% - var(--wave) + var(--dx) / 2), -190%) scale(calc(var(--s) * 0.9)); opacity: 0.9; }
+  100% { opacity: 0; transform: translate(calc(-50% + var(--dx)), -290%) scale(calc(var(--s) * 0.5)); }
+}
+@keyframes hj-toast {
+  0% { opacity: 0; transform: translateY(6px); }
+  12% { opacity: 1; transform: none; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}

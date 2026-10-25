@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <img src="icons/icon48.png" alt="" width="32" height="32">
+    <div>
+      <h1>HookJump</h1>
+      <p class="tag">RL that learns the best part of every song</p>
+    </div>
+  </header>
+
+  <section class="toggles">
+    <label class="row">
+      <span><b>Learning on</b><small>Watches how you listen on YouTube &amp; YT Music</small></span>
+      <input type="checkbox" id="enabled">
+    </label>
+    <label class="row">
+      <span><b>Community learning</b><small>Share anonymous chunk rewards, use everyone's</small></span>
+      <input type="checkbox" id="share">
+    </label>
+    <label class="row">
+      <span><b>Auto-skip to hook</b><small>Jumps by itself: You → Community → Heatmap</small></span>
+      <input type="checkbox" id="autoSkip">
+    </label>
+    <label class="row">
+      <span><b>Hook marathon</b><small>Auto-skip, then next song after the hook</small></span>
+      <input type="checkbox" id="marathon">
+    </label>
+  </section>
+
+  <section class="stats">
+    <div><span id="local">0</span><small>songs you taught</small></div>
+    <div><span id="sent">0</span><small>signals shared</small></div>
+    <div><span id="community">–</span><small>community songs</small></div>
+  </section>
+
+  <p id="sync" class="sync"></p>
+
+  <footer>
+    <span>Tap 🔥 on the page when you hear the best part. · <b id="ver"></b></span>
+  </footer>
+  <script src="popup.js"></script>
+</body>
+</html>
